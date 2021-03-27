@@ -1,0 +1,9 @@
+dateparser==1.0.0
+ipython==7.22.0
+pika==1.2.0
+scrapy==2.4.1
+scrapyd==1.2.1
+scrapyd-client==1.1.0
+scrapy-fake-useragent==1.4.4
+stem==1.8.0 
+twisted==21.2.0
