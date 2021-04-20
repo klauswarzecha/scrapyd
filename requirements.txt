@@ -4,7 +4,7 @@ pika==1.2.0
 scrapy==2.5.0
 scrapyd==1.2.1
 scrapyd-client==1.1.0
-scrapy-fake-useragent==1.4.4
+scrapy-splash==0.7.2
 scrapy-proxy-pool==0.1.9
 stem==1.8.0 
 twisted==21.2.0
