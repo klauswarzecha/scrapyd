@@ -3,9 +3,9 @@ ipython==7.22.0
 pika==1.2.0
 scrapy==2.5.0
 scrapyd==1.2.1
+scrapy-fake-useragent==1.4.4
 scrapy-splash==0.7.2
 scrapy-proxy-pool==0.1.9
 stem==1.8.0 
 twisted==21.2.0
-scrapyd-client==1.1.0
 git+git://github.com/klauswarzecha/scrapyd-client.git
