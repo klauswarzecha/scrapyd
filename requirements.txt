@@ -1,5 +1,5 @@
 dateparser==1.0.0
-ipython==7.22.0
+ipython==7.24.1
 pika==1.2.0
 scrapy==2.5.0
 scrapyd==1.2.1
