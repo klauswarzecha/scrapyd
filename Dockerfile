@@ -1,4 +1,4 @@
-FROM python:3.9.4-slim-buster as builder
+FROM python:3.9.6-slim-buster as builder
 ARG STAGE=builder
 COPY install.sh /tmp/
 RUN chmod u+x /tmp/install.sh
@@ -15,7 +15,7 @@ COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
 
 
-FROM python:3.9.4-slim-buster as worker
+FROM python:3.9.6-slim-buster as worker
 ARG STAGE=worker
 COPY install.sh /tmp/
 RUN chmod u+x /tmp/install.sh
