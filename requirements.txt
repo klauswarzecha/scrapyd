@@ -1,11 +1,14 @@
 dateparser==1.0.0
-ipython==7.24.1
+ipython==7.28.0
 pika==1.2.0
-scrapy==2.5.0
+scrapy==2.5.1
 scrapyd==1.2.1
+scrapyd-client==1.2.0
+scrapyrt==0.12.0
 scrapy-fake-useragent==1.4.4
-scrapy-splash==0.7.2
+scrapy-splash==0.8.0
 scrapy-proxy-pool==0.1.9
 stem==1.8.0 
-twisted==21.2.0
-git+git://github.com/klauswarzecha/scrapyd-client.git
+twisted==21.7.0
+# git+git://github.com/klauswarzecha/scrapyd-client.git
+chompjs==1.1.4
