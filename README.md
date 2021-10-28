@@ -23,7 +23,7 @@ I had the "pleasure" to inherit a Dockerfile for [Scrapy](https://scrapy.org/) t
 
 ## Concept
 
- + Scrapy is a Python-based framework. Consequently, I decided for `python:3.9.2-slim-buster` as the base image. It is compact and Debian-based. 
+ + Scrapy is a Python-based framework. Initially, I decided for `python:3.9.2-slim-buster` as the base image. It is compact and Debian-based. 
  + A Dockerfile should result in a reproducible image. Consequently, I decided for **strict version pinning** in the pip requirements file.
  + Scrapy is based on [Twisted](https://twistedmatrix.com/trac/). When installing via pip, gcc is required. However, there is no need to keep gcc in the final image. Consequently, I decided for a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
  
