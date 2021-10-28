@@ -14,6 +14,9 @@ if [ "$STAGE" == "builder" ]
 then
     # Install toolchain without unnecessary recommended packages
     apt-get -y install --no-install-recommends apt-utils build-essential gcc git
+elif [ "$STAGE" == "worker" ]
+then
+    apt-get -y install --no-install-recommends curl
 fi
 
 # Delete cached files
