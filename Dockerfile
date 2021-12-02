@@ -17,7 +17,7 @@ COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
 
 
-FROM python:${PYVERSION} as builder
+FROM python:${PYVERSION} as worker
 ARG STAGE=worker
 COPY install.sh /tmp/
 RUN chmod u+x /tmp/install.sh
