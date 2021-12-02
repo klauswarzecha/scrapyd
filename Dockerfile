@@ -1,4 +1,6 @@
-FROM python:3.9.7-slim-bullseye as builder
+ARG PYVERSION=3.9.9-slim-bullseye
+FROM python:${PYVERSION} as builder
+
 ARG STAGE=builder
 COPY install.sh /tmp/
 RUN chmod u+x /tmp/install.sh
@@ -15,7 +17,7 @@ COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt
 
 
-FROM python:3.9.7-slim-bullseye as worker
+FROM python:${PYVERSION} as builder
 ARG STAGE=worker
 COPY install.sh /tmp/
 RUN chmod u+x /tmp/install.sh
