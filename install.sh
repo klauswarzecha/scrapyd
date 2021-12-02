@@ -13,7 +13,7 @@ apt-get -y upgrade
 if [ "$STAGE" == "builder" ]
 then
     # Install toolchain without unnecessary recommended packages
-    apt-get -y install --no-install-recommends apt-utils build-essential gcc git
+    apt-get -y install --no-install-recommends apt-utils build-essential gcc
 elif [ "$STAGE" == "worker" ]
 then
     apt-get -y install --no-install-recommends curl
