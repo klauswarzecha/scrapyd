@@ -7,7 +7,7 @@ RUN chmod u+x /tmp/install.sh
 RUN /tmp/install.sh
 
 RUN python -m venv /opt/venv
-RUN /opt/venv/bin/python -m pip install --upgrade pip==21.3.1
+RUN /opt/venv/bin/python -m pip install --upgrade pip==22.0.4
 
 ENV PATH=/opt/venv/bin:${PATH}
 COPY ./scrapyd.conf /etc/scrapyd/
