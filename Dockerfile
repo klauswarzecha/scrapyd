@@ -1,4 +1,4 @@
-ARG PYVERSION=3.9.9-slim-bullseye
+ARG PYVERSION=3.10.4-slim-bullseye
 FROM python:${PYVERSION} as builder
 
 ARG STAGE=builder
