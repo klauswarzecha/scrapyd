@@ -1,32 +1,43 @@
-ARG PYVERSION=3.11.0-slim-bullseye
+ARG PYVERSION=3.11-slim-bullseye
 FROM python:${PYVERSION} as builder
 
 ARG STAGE=builder
-COPY install.sh /tmp/
-RUN chmod u+x /tmp/install.sh
-RUN /tmp/install.sh
+
+WORKDIR /tmp
+
+COPY install.sh .
+COPY requirements.txt .
+
+RUN chmod u+x ./install.sh
+RUN ./install.sh
 
 RUN python -m venv /opt/venv
 RUN /opt/venv/bin/python -m pip install --upgrade pip
 
 ENV PATH=/opt/venv/bin:${PATH}
+
 COPY ./scrapyd.conf /etc/scrapyd/
 
 RUN pip install wheel==0.38.4
-COPY requirements.txt /tmp/
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -r ./requirements.txt
 
 
 FROM python:${PYVERSION} as worker
+
 ARG STAGE=worker
-COPY install.sh /tmp/
-RUN chmod u+x /tmp/install.sh
-RUN /tmp/install.sh
+ARG DEFAULT_PORT=6800
+ARG DEFAULT_USER=arachne
 
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH=/opt/venv/bin:${PATH}
 COPY ./scrapyd.conf /etc/scrapyd/
 
-EXPOSE 6800
+
+ENV USERNAME ${DEFAULT_USER}
+RUN useradd --user-group --system --create-home --no-log-init ${USERNAME}
+USER ${USERNAME}
+
+ENV PORT ${DEFAULT_PORT}
+EXPOSE $PORT
 
 CMD ["scrapyd"]
