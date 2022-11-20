@@ -23,20 +23,13 @@ RUN pip install -r ./requirements.txt
 
 
 FROM python:${PYVERSION} as worker
-
 ARG STAGE=worker
-ARG DEFAULT_PORT=6800
-ARG DEFAULT_USER=arachne
 
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH=/opt/venv/bin:${PATH}
 COPY ./scrapyd.conf /etc/scrapyd/
 
-
-ENV USERNAME ${DEFAULT_USER}
-RUN useradd --user-group --system --create-home --no-log-init ${USERNAME}
-USER ${USERNAME}
-
+ARG DEFAULT_PORT=6800
 ENV PORT ${DEFAULT_PORT}
 EXPOSE $PORT
 
