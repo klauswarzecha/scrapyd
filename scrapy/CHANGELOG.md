@@ -1,10 +1,9 @@
 # CHANGELOG
 
-## 2022-11-20 
+## 2022-11-21 
 
 + Use Python-3.11.0-slim-bullseye as base image
 + Update versions of Python packages
-+ Allow to pass username an port when building the Docker image
 + Add a docker-compose file that allows to build the scrapy image 
 and spins it up together with a RabbitMQ container
 

@@ -1,0 +1,52 @@
+version: '3.8'
+services:
+
+  scrapy:
+    image: klauswarzecha/scrapy:2.7.1
+    build: ./scrapy
+    container_name: scrapy
+    hostname: scrapy
+    environment: 
+      - TZ=Europe/Berlin
+    ports:
+      - mode: host
+        protocol: tcp
+        published: 6800
+        target: 6800 
+    # volumes:
+    #   - type: bind
+    #     source: /srv/data/scrapy
+    #     target: /var/lib/scrapy
+    networks:
+      - crawling
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq:3.11.3-management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    restart: always
+    ports:
+      - target: 5672
+        published: 5672
+        protocol: tcp
+        mode: host
+      - target: 15672
+        published: 15672
+        protocol: tcp
+        mode: host
+    env_file: 
+      - ./env/rabbbitmq.env
+    networks:
+      - crawling
+    volumes: 
+      - type: volume
+        source: rabbitmqdata
+        target: /var/lib/rabbitmq/data
+
+networks:
+  crawling:
+
+volumes:
+  rabbitmqdata:
+    

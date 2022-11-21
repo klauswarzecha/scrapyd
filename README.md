@@ -1,4 +1,4 @@
-# A Dockerfile for Scrapy and Scrapyd
+# Web extraction with Scrapy and Scrapyd
 
 ## What is scrapy?
 
@@ -13,32 +13,32 @@ According to the [documentation](https://scrapyd.readthedocs.io/en/stable/index.
 
 > Scrapyd is an application for deploying and running Scrapy spiders. It enables you to deploy (upload) your projects and control their spiders using a JSON API.
 
-## Are there any other images and Dockerfiles?
+## What is this project about?
 
-Yes. An [image based on Debian Buster](https://hub.docker.com/r/vimagick/scrapyd) is actively maintained by @vimagick.
+I was looking for a decent Docker image for Scrapy. I wanted something 
 
-## Why did you write your own Dockerfile? 
++ with the most recent version of Python
++ easy to update and maintain
++ based on Debian
 
-I had the "pleasure" to inherit a Dockerfile for [Scrapy](https://scrapy.org/) that produces an image the size of the fungus in the [Malheur National Forest](https://www.fs.usda.gov/malheur/). At this point, I decided to roll my own.
-
-## Concept
-
- + Scrapy is a Python-based framework. Initially, I decided for `python:3.9.2-slim-buster` as the base image. It is compact and Debian-based. 
- + A Dockerfile should result in a reproducible image. Consequently, I decided for **strict version pinning** in the pip requirements file.
- + Scrapy is based on [Twisted](https://twistedmatrix.com/trac/). When installing via pip, gcc is required. However, there is no need to keep gcc in the final image. Consequently, I decided for a [multi-stage build](https://docs.docker.com/develop/develop-images/multistage-build/).
- 
-## Did you include any libraries to communicate with databases?
-
-No! I am convinced that a scraper should be database-agnostic! All communication should be handled through queues! Consequently, only [pika](https://pika.readthedocs.io/en/stable/) is included. 
-
-## Usage
-
-Spin up your container via a [Docker Compose file](https://docs.docker.com/compose/). Don't forget to mount your scraper code into the container.
-
-Enjoy!
+This is it.
 
 
 
-## Acknowledgement
+## Build the Scrapy image
 
-I thank Itamar Turner-Trauring (@itamarst) for his articles at https://pythonspeed.com.
+`docker-compose -f crawling.yaml build scrapy` does the trick.
+
+## Configuration
+    
+If you are using RabbitMQ together with Scrapy, you need to provide values for `RABBITMQ_DEFAULT_USER` and `RABBITMQ_DEFAULT_PASS`. I find that an environment file is quite convenient here.
+
+## Spin the containers up
+
+``docker-compose -f crawling.yaml up -d`` starts the containers for Scrapy and RabbitMQ in detached mode.
+
+
+
+## Acknowledgements
+
+I thank Itamar Turner-Trauring (@itamarst) for his articles at https://pythonspeed.com and Maximilian Schwarzmüller at [ACADEMIND](https://academind.com/) for his excellent course on Docker and Kubernetes.
