@@ -33,4 +33,4 @@ ARG DEFAULT_PORT=6800
 ENV PORT ${DEFAULT_PORT}
 EXPOSE $PORT
 
-CMD ["scrapyd"]
+CMD ["scrapyd", "--pidfile="]
