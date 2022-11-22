@@ -13,10 +13,6 @@ services:
         protocol: tcp
         published: 6800
         target: 6800 
-    # volumes:
-    #   - type: bind
-    #     source: /srv/data/scrapy
-    #     target: /var/lib/scrapy
     networks:
       - crawling
     restart: unless-stopped
