@@ -40,6 +40,25 @@ services:
         source: rabbitmqdata
         target: /var/lib/rabbitmq/data
 
+  medusa:
+    image: datawookie/medusa-proxy:latest
+    container_name: medusa
+    hostname: medusa
+    networks:
+      - crawling
+    environment:
+      - HEADS=4
+      - TORS=3
+    ports:
+      - 1080:1080
+	    - 2090:2090
+      - 8800:8800
+      - 8888:8888
+      - 8889:8889
+      - 8890:8890
+      - 8891:8891
+
+
 networks:
   crawling:
 
