@@ -27,7 +27,11 @@ This is it.
 
 ## Build the Scrapy image
 
-`docker-compose -f crawling.yaml build scrapy` does the trick.
+```bash
+docker-compose -f crawling.yaml build scrapy
+``` 
+
+does the trick.
 
 ## Configuration
     

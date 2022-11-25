@@ -46,9 +46,8 @@ services:
     hostname: medusa
     networks:
       - crawling
-    environment:
-      - HEADS=4
-      - TORS=3
+    env_file:
+      - ./env/medusa.env
     ports:
       - 1080:1080
       - 2090:2090
