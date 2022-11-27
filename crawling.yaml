@@ -6,8 +6,8 @@ services:
     build: ./scrapy
     container_name: scrapy
     hostname: scrapy
-    environment: 
-      - TZ=Europe/Berlin
+    env_file: 
+      - ./env/scrapy.env
     ports:
       - mode: host
         protocol: tcp
