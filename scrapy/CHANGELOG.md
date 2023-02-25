@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 2022-11-21
+## 2023-02-25
 
 + Update versions in requirements.txt
 + Remove some dependencies
