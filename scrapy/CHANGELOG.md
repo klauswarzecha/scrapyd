@@ -2,6 +2,11 @@
 
 ## 2022-11-21
 
++ Update versions in requirements.txt
++ Remove some dependencies
+
+## 2022-11-21
+
 + Use Python-3.11.0-slim-bullseye as base image
 + Update versions of Python packages
 + Add a docker-compose file that allows to build the scrapy image
